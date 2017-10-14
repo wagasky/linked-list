@@ -161,6 +161,7 @@ h1 img {
 }
 
 .card-button {
+  background-color: transparent;
   border: none;
   position: absolute;
   font-size: 12px;
@@ -184,3 +185,16 @@ h1 img {
   right: 0px;
   bottom: 0px;
 }
+
+/* interactive classes */
+
+.read {
+  background-color: #F2F4F4;
+}
+
+.read footer .link-card-read-button {
+  color: #F05A28;
+  font-weight: 800;
+}
+
+
