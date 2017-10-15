@@ -33,6 +33,7 @@ main {
 
 #form-container {
   display: inline-block;
+  z-index: 1;
   background-color: #455A64;
   min-width: 400px;
   padding: 160px 0px;
@@ -40,8 +41,8 @@ main {
   position: fixed;
   top: 0px;
   left: 0px;
-
 }
+
 #list-container {
   background-color: #CFD8DC;
   display: inline-block;
