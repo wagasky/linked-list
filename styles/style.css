@@ -35,7 +35,6 @@ main {
   display: inline-block;
   z-index: 1;
   background-color: #455A64;
-  min-width: 400px;
   padding: 160px 0px;
   margin: 0px auto;
   position: fixed;
@@ -47,7 +46,6 @@ main {
   background-color: #CFD8DC;
   display: inline-block;
   text-align: center;
-  min-width: 400px;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -64,9 +62,11 @@ main {
   #form-container {
     position: relative;
     padding: 20px 20px 20px 0px;
+    min-height: 30vh;
   }
   #list-container {
     position: relative;
+    min-height: 70vh;
   }
 }
 
