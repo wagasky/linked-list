@@ -61,7 +61,7 @@ main {
   }
   #form-container {
     position: relative;
-    padding: 20px 20px 20px 0px;
+    padding: 5px 20px 20px 0px;
     min-height: 30vh;
   }
   #list-container {
@@ -110,10 +110,10 @@ h1 img {
 
 @media screen and (max-width: 800px) {
   h1 {
-    font-size: 36px;
+    font-size: 30px;
   }
   h1 img {
-    width: 55px;
+    width: 44px;
   }
   .list-inputs {
     margin: 20px auto;
@@ -142,14 +142,17 @@ h1 img {
 .link-card-container p {
   font-size: 18px;
   padding: 20px 0px;
-  color: #607D8B;
   text-align: left;
-  text-decoration: underline;
-  text-decoration-color: #F2F4F4;
   border-bottom: 2px solid #CFD8DC;
 }
 
-.link-card-container p:hover {
+.link-card-container p a {
+  text-decoration: underline;
+  text-decoration-color: #F2F4F4;
+  color: #607D8B;
+}
+
+.link-card-container p a:hover {
   color: #445A64;
   text-decoration-color: #FFC107;
   font-weight: 800;
