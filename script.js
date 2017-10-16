@@ -21,7 +21,7 @@ function createCard() {
   listContainer.prepend(
     `<article class="link-card-container" id="${thisCard}">
       <h2 class="link-card-title">${cardTitle}</h2>
-        <p><a href='${cardUrl}' target="_blank">${cardUrl}</a></p>
+        <p><a href='${cardUrl}' target="_blank" title='${cardTitle}'>${cardUrl}</a></p>
         <footer class="link-card-footer">
           <button class="link-card-read-button card-button">Read</button>
           <button class="link-card-delete-button card-button">Delete</button> 
