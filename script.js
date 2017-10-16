@@ -1,11 +1,44 @@
-// Initial pass JS
-// branch to work on javascript
-// setting up variables/selectors
-// event listener for gather input field data
-// event listener for click on submit (related to above)
-// pseudo code for how we want to build the cards
-// Build the card
-// We have a unique for each card and an external counter so that time you create a card, we keep track of how many cards we have and so we can give each a unique identifier
-// Make test doc of links/titles
-// enter console logs to test
+
+// VARIABLES
+
+var titleInput = $("#title-input");
+var urlInput = $("#url-input");
+var inputButton = document.getElementById("input-button");
+var listContainer = $("#list-container")
+var cardNumber = 1
+
+// EVENT LISTENERS
+
+inputButton.addEventListener('click', createCard);
+
+// FUNCTIONS
+
+
+function createCard() {
+  var cardTitle = $(titleInput).val();
+  var cardUrl = $(urlInput).val();
+  var thisCard = "link-card-" + cardNumber;
+  listContainer.prepend(
+    `<article class="link-card-container" id="${thisCard}">
+      <h2 class="link-card-title">${cardTitle}</h2>
+        <p><a href='${cardUrl}' target="_blank">${cardUrl}</a></p>
+        <footer class="link-card-footer">
+          <button class="link-card-read-button card-button">Read</button>
+          <button class="link-card-delete-button card-button">Delete</button> 
+       </footer> 
+    </article>`
+    );
+  var readButton = document.querySelector(".link-card-read-button");
+  var deleteButton = document.querySelector(".link-card-delete-button");
+  readButton.addEventListener('click', function() {
+    $("#" + thisCard).toggleClass("read");
+  })
+  deleteButton.addEventListener('click', function() {
+    $("#" + thisCard).remove();
+  })
+
+  cardNumber++;
+}
+
+
 
