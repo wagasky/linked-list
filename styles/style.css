@@ -99,6 +99,10 @@ h1 img {
   background-color: #FFD773;
 }
 
+#input-button:disabled {
+  background-color: #FFD773;
+}
+
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 30px;
