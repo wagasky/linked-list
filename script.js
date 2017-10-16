@@ -2,22 +2,38 @@
 // VARIABLES
 
 var titleInput = $("#title-input");
+var titleInputJsSelected = document.querySelector("#title-input");
 var urlInput = $("#url-input");
 var inputButton = document.getElementById("input-button");
-var listContainer = $("#list-container")
-var cardNumber = 1
+var listContainer = $("#list-container");
+var cardNumber = 1;
+var cardCount = 0;
+
+// default button state
+inputButton.disabled = true;
 
 // EVENT LISTENERS
 
 inputButton.addEventListener('click', createCard);
+titleInputJsSelected.addEventListener('keyup', enableButton)
+$(urlInput).keyup(function() {
+  enableButton();
+});
+
 
 // FUNCTIONS
-
 
 function createCard() {
   var cardTitle = $(titleInput).val();
   var cardUrl = $(urlInput).val();
   var thisCard = "link-card-" + cardNumber;
+
+  if (emptyInputError() === true) {
+    return false;
+  }
+  // emptyInputError();
+
+
   listContainer.prepend(
     `<article class="link-card-container" id="${thisCard}">
       <h2 class="link-card-title">${cardTitle}</h2>
@@ -35,10 +51,33 @@ function createCard() {
   })
   deleteButton.addEventListener('click', function() {
     $("#" + thisCard).remove();
+    cardCount--;
   })
 
   cardNumber++;
+  cardCount++;
 }
+
+function enableButton() {
+  if (titleInputJsSelected.value.length === 0 || $(urlInput).val() === ""){
+    inputButton.disabled = true;
+  } else {
+    inputButton.disabled = false;
+  }
+}
+
+function emptyInputError() {
+  if ($(titleInput).val() === "" || $(urlInput).val() === "" || validateURL($(urlInput).val())===false) {
+    inputButton.innerText = "Please enter a Title & valid URL"
+    setTimeout(function(){ inputButton.innerText = "Enter"; }, 3000);
+    return true;
+  };
+}
+
+function validateURL(value) {
+    return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+}
+
 
 
 
