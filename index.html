@@ -13,6 +13,13 @@
 
   <body>
     <main>
+      <div id="count-container">
+      <header> <img src="images/link-bookmark-logo.png"> 
+          <h2>READ</h2> 
+          <h3><span id="unread-count">0</span> of <span id="card-count">0</span></h3>
+        </header>
+      </div>
+
       <section class="main-sections" id="form-container">
         <form onsubmit="return false">
           <h1>Linked <img src="images/linked-list-logo.svg" alt="linked list logo"> List</h1>
@@ -25,7 +32,9 @@
       </section>
 
       <section class="main-sections" id="list-container">
-    
+        
+        <button id="clear-read-button">Clear Read</button>
+        
       </section>
 
     </main>

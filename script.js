@@ -5,12 +5,18 @@ var titleInput = $("#title-input");
 var titleInputJsSelected = document.querySelector("#title-input");
 var urlInput = $("#url-input");
 var inputButton = document.getElementById("input-button");
+var cardCounter = $("#card-count");
+var unreadCounter = $("#unread-count");
 var listContainer = $("#list-container");
+var clearButton = document.querySelector('#clear-read-button')
 var cardNumber = 1;
+var readCount = 0;
 var cardCount = 0;
 
 // default button state
 inputButton.disabled = true;
+clearButton.disabled = true;
+clearButton.style.visibility = "hidden";
 
 // EVENT LISTENERS
 
@@ -29,10 +35,10 @@ function createCard() {
   var thisCard = "link-card-" + cardNumber;
 
   if (emptyInputError() === true) {
+    $(titleInput).val("");
+    $(urlInput).val("");
     return false;
   }
-  // emptyInputError();
-
 
   listContainer.prepend(
     `<article class="link-card-container" id="${thisCard}">
@@ -46,16 +52,50 @@ function createCard() {
     );
   var readButton = document.querySelector(".link-card-read-button");
   var deleteButton = document.querySelector(".link-card-delete-button");
+  
   readButton.addEventListener('click', function() {
-    $("#" + thisCard).toggleClass("read");
+    if( $('#'+thisCard).hasClass('read') ) {
+      $('#'+thisCard).removeClass('read');
+      readCount--
+      $(unreadCounter).text(readCount);
+    } else {
+      $('#'+thisCard).addClass('read')
+      readCount++
+      $(unreadCounter).text(readCount);
+    }
   })
+
   deleteButton.addEventListener('click', function() {
-    $("#" + thisCard).remove();
-    cardCount--;
+    if($('#'+thisCard).hasClass('read')) {
+      readCount--
+      $(unreadCounter).text(readCount);
+      $("#" + thisCard).remove();
+      cardCount--;
+      $(cardCounter).text(cardCount);
+      if (cardCount === 0){
+        $('#count-container').slideToggle('slow', 'linear');
+      }
+    } else {
+      $("#" + thisCard).remove();
+      cardCount--;
+      $(cardCounter).text(cardCount);
+      if (cardCount === 0){
+        $('#count-container').slideToggle('slow', 'linear');
+      }
+    }
   })
+
+  $(titleInput).val("");
+  $(urlInput).val("");
+
+  if (cardCount === 0){
+    $('#count-container').slideToggle('slow', 'linear');
+  }
 
   cardNumber++;
   cardCount++;
+  $(cardCounter).text(cardCount);
+
 }
 
 function enableButton() {
