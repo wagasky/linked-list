@@ -115,7 +115,53 @@ h1 img {
   }
 }
 
+/* bookmark section */
+
+div {
+  display: none;
+  position: fixed;
+  top: 0px;
+  right: 14px;
+  width: 60px;
+  height: 120px;
+  z-index: 1000;
+}
+header {
+  position: relative;
+  width: 60px
+  height: 120px
+  width: 100%;
+  z-index: 1000;
+}
+
+header img {
+  width: 60px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: .95;
+}
+
+
+header h3 {
+  color: #FFFFFF;
+  position: relative;
+  font-size: 14px;
+  top: 18px;
+  margin: auto;
+  z-index: 1;
+}
+header h2 {
+  position: relative;
+  color: #FFFFFF;
+  font-size: 18px;
+  margin: auto;
+  top: 12px;
+  z-index: 1;
+}
+
 /* link card section */
+
   
 .link-card-container {
   background-color: #FFFFFF;
@@ -182,6 +228,27 @@ h1 img {
 .link-card-delete-button {
   bottom: 0px;
   right: 0px;
+}
+
+/* css for clear read button */
+#clear-read-button {
+  margin: 20px auto;
+  position: relative;
+  width:  334px;
+  height:  32px;
+  color: #FFFFFF;
+  background-color: #FFC107;
+  border: 0px;
+  font-weight: 800;
+  border-radius: 0;
+}
+
+#clear-read-button:hover {
+  background-color: #FFD773;
+}
+
+#clear-read-button:disabled {
+  background-color: #FFD773;
 }
 
 /* interactive classes */
