@@ -5,8 +5,11 @@ var titleInput = $("#title-input");
 var titleInputJsSelected = document.querySelector("#title-input");
 var urlInput = $("#url-input");
 var inputButton = document.getElementById("input-button");
+var cardCounter = $("#card-count");
+var unreadCounter = $("#unread-count");
 var listContainer = $("#list-container");
 var cardNumber = 1;
+var readCount = 0;
 var cardCount = 0;
 
 // default button state
@@ -29,7 +32,8 @@ function createCard() {
   var thisCard = "link-card-" + cardNumber;
 
   if (emptyInputError() === true) {
-
+    $(titleInput).val("");
+    $(urlInput).val("");
     return false;
   }
   // emptyInputError();
@@ -56,10 +60,15 @@ function createCard() {
     cardCount--;
   })
 
-
+  $(titleInput).val("");
+  $(urlInput).val("");
 
   cardNumber++;
   cardCount++;
+
+  $(cardCounter).val(cardCount)
+  $(unreadCounter).val;
+
 }
 
 function enableButton() {
