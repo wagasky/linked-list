@@ -115,7 +115,52 @@ h1 img {
   }
 }
 
+/* bookmark section */
+
+div {
+  position: fixed;
+  top: 0px;
+  right: 20px;
+  width: 70px;
+  height: 120px;
+  z-index: 1000;
+}
+header {
+  position: relative;
+  width: 70px
+  height: 120px
+  width: 100%;
+  z-index: 1000;
+}
+
+header img {
+  width: 70px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: .95;
+}
+
+
+header h3 {
+  color: #FFFFFF;
+  position: relative;
+  font-size: 14px;
+  top: 18px;
+  margin: auto;
+  z-index: 1;
+}
+header h2 {
+  position: relative;
+  color: #FFFFFF;
+  font-size: 18px;
+  margin: auto;
+  top: 12px;
+  z-index: 1;
+}
+
 /* link card section */
+
   
 .link-card-container {
   background-color: #FFFFFF;

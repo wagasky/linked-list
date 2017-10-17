@@ -29,6 +29,7 @@ function createCard() {
   var thisCard = "link-card-" + cardNumber;
 
   if (emptyInputError() === true) {
+
     return false;
   }
   // emptyInputError();
@@ -47,12 +48,15 @@ function createCard() {
   var readButton = document.querySelector(".link-card-read-button");
   var deleteButton = document.querySelector(".link-card-delete-button");
   readButton.addEventListener('click', function() {
-    $("#" + thisCard).toggleClass("read");
+    // $("#" + thisCard).toggleClass("read");
+
   })
   deleteButton.addEventListener('click', function() {
     $("#" + thisCard).remove();
     cardCount--;
   })
+
+
 
   cardNumber++;
   cardCount++;
