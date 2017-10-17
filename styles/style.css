@@ -122,6 +122,20 @@ h1 img {
   border: 2px solid #607D8B;
   margin: 20px 15px;
   padding: 15px 15px 5px;
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 90%;
+    width: 90%; 
+  }
+
+  to {
+    margin-top: 0%;
+    width: 90%;
+  }
 }
 
 .link-card-container h2 {
