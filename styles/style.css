@@ -117,7 +117,7 @@ h1 img {
 
 /* bookmark section */
 
-div {
+#count-container {
   display: none;
   position: fixed;
   top: 0px;
@@ -232,15 +232,17 @@ header h2 {
 
 /* css for clear read button */
 #clear-read-button {
-  margin: 20px auto;
-  position: relative;
-  width:  334px;
-  height:  32px;
-  color: #FFFFFF;
   background-color: #FFC107;
   border: 0px;
-  font-weight: 800;
   border-radius: 0;
+  bottom: 12px;
+  color: #FFFFFF;
+  font-weight: 700;
+  height: 32px;
+  opacity: .95;
+  position: fixed;
+  right: 14px;
+  width: 80px;
 }
 
 #clear-read-button:hover {
