@@ -72,20 +72,29 @@ function createCard() {
       $("#" + thisCard).remove();
       cardCount--;
       $(cardCounter).text(cardCount);
+      if (cardCount === 0){
+        $('#count-container').slideToggle('slow', 'linear');
+      }
     } else {
       $("#" + thisCard).remove();
       cardCount--;
       $(cardCounter).text(cardCount);
+      if (cardCount === 0){
+        $('#count-container').slideToggle('slow', 'linear');
+      }
     }
   })
 
   $(titleInput).val("");
   $(urlInput).val("");
 
+  if (cardCount === 0){
+    $('#count-container').slideToggle('slow', 'linear');
+  }
+
   cardNumber++;
   cardCount++;
   $(cardCounter).text(cardCount);
-
 
 }
 

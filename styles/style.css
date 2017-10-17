@@ -118,6 +118,7 @@ h1 img {
 /* bookmark section */
 
 div {
+  display: none;
   position: fixed;
   top: 0px;
   right: 14px;
