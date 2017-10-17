@@ -8,15 +8,17 @@ var inputButton = document.getElementById("input-button");
 var cardCounter = $("#card-count");
 var unreadCounter = $("#unread-count");
 var listContainer = $("#list-container");
+
 var clearButton = $('#clear-read-button');
+
 var cardNumber = 1;
 var readCount = 0;
 var cardCount = 0;
 
-///default button state
-// inputButton.disabled = true;
-// clearButton.disabled = true;
-// clearButton.style.visibility = "hidden";
+
+// default button state
+inputButton.disabled = true;
+
 
 // EVENT LISTENERS
 

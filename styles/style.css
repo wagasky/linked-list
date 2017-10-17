@@ -168,6 +168,21 @@ header h2 {
   border: 2px solid #607D8B;
   margin: 20px 15px;
   padding: 15px 15px 5px;
+  animation-duration: 2.5s;
+  animation-name: fadeIn ;
+  
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(20%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .link-card-container h2 {
