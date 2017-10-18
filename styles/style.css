@@ -33,7 +33,6 @@ main {
   padding: 160px 0px;
   position: fixed;
   top: 0px;
-/*  z-index: 1;*/
 }
 
 #list-container {
@@ -62,6 +61,7 @@ main {
     position: relative;
   }
 }
+
 /* input section */
 
 h1 {
@@ -85,14 +85,14 @@ h1 img {
 }
 
 #input-button {
-  margin: auto;
-  width:  334px;
-  height:  32px;
-  color: #FFFFFF;
   background-color: #FFC107;
   border: 0px;
-  font-weight: 800;
   border-radius: 0;
+  color: #FFFFFF;
+  font-weight: 800;
+  height:  32px;
+  margin: auto;
+  width:  334px;
 }
 
 #input-button:hover {
@@ -115,47 +115,48 @@ h1 img {
   }
 }
 
-/* bookmark section */
+/* read-list counter section */
 
 #count-container {
   display: none;
-  position: fixed;
-  top: 0px;
-  right: 14px;
-  width: 60px;
   height: 120px;
+  position: fixed;
+  right: 14px;
+  top: 0px;
+  width: 60px;
   z-index: 1000;
 }
+
 header {
+  height: 120px;
   position: relative;
-  width: 60px
-  height: 120px
+  width: 60px;
   width: 100%;
   z-index: 1000;
 }
 
 header img {
-  width: 60px;
-  position: absolute;
   left: 0px;
-  top: 0px;
   opacity: .95;
+  position: absolute;
+  top: 0px;
+  width: 60px;
 }
-
 
 header h3 {
   color: #FFFFFF;
-  position: relative;
   font-size: 14px;
-  top: 18px;
   margin: auto;
+  position: relative;
+  top: 18px;
   z-index: 1;
 }
+
 header h2 {
-  position: relative;
   color: #FFFFFF;
   font-size: 18px;
   margin: auto;
+  position: relative;
   top: 12px;
   z-index: 1;
 }
@@ -164,13 +165,12 @@ header h2 {
 
   
 .link-card-container {
+  animation-duration: 2.5s;
+  animation-name: fadeIn ;
   background-color: #FFFFFF;
   border: 2px solid #607D8B;
   margin: 20px 15px;
   padding: 15px 15px 5px;
-  animation-duration: 2.5s;
-  animation-name: fadeIn ;
-  
 }
 
 @keyframes fadeIn {
@@ -246,13 +246,14 @@ header h2 {
 }
 
 /* css for clear read button */
+
 #clear-read-button {
-  display: none;
   background-color: #FFC107;
-  border: 0px;
   border-radius: 0;
+  border: 0px;
   bottom: 12px;
   color: #FFFFFF;
+  display: none;
   font-weight: 700;
   height: 32px;
   opacity: .95;

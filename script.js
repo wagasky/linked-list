@@ -1,63 +1,66 @@
-
 // VARIABLES
 
-var titleInput = $("#title-input");
-var urlInput = $("#url-input");
+var $titleInput = $("#title-input");
+var $urlInput = $("#url-input");
 var inputButton = document.getElementById("input-button");
-var cardCounter = $("#card-count");
-var readCounter = $("#read-count");
-var listContainer = $("#list-container");
-
-var clearButton = $('#clear-read-button');
-
+var $cardCounter = $("#card-count");
+var $readCounter = $("#read-count");
+var $listContainer = $("#list-container");
+var $clearButton = $('#clear-read-button');
 var cardNumber = 1;
 var readCount = 0;
 var cardCount = 0;
+var thisCard
 
+// DEFAULT BUTTON STATES
 
-// default button state
 inputButton.disabled = true;
-
 
 // EVENT LISTENERS
 
 inputButton.addEventListener('click', createCard);
 
-$(titleInput).keyup(function() {
+$titleInput.keyup(function() {
   enableButton();
 });
 
-$(urlInput).keyup(function() {
+$urlInput.keyup(function() {
   enableButton();
 });
 
-
-
-$(clearButton).on('click', function(){
+$clearButton.on('click', function(){
   cardCount = cardCount - readCount;
   readCount = 0;
   $('.read').remove();
-  $(cardCounter).text(cardCount);
-  $(readCounter).text(readCount);
+  cardCountText();
+  readCountText();
   if (cardCount === 0){
     $('#count-container').delay(1500).slideToggle('slow', 'linear')}
 })
 
-
 // FUNCTIONS
 
-function createCard() {
-  var cardTitle = $(titleInput).val();
-  var cardUrl = $(urlInput).val();
+function cardCountText() {
+  $cardCounter.text(cardCount);
+}
+
+function readCountText() {
+  $readCounter.text(readCount);
+}
+
+function createCard(event) {
+  event.preventDefault();
+  var cardTitle = $titleInput.val();
+  var cardUrl = $urlInput.val();
   var thisCard = "link-card-" + cardNumber;
 
   if (emptyInputError() === true) {
-    $(titleInput).val("");
-    $(urlInput).val("");
+    $titleInput.val("");
+    $urlInput.val("");
     return false;
   }
 
-  listContainer.prepend(
+  $listContainer.prepend(
     `<article class="link-card-container" id="${thisCard}">
       <h2 class="link-card-title">${cardTitle}</h2>
         <p><a href='${cardUrl}' target="_blank" title='${cardTitle}'>${cardUrl}</a></p>
@@ -66,61 +69,65 @@ function createCard() {
           <button class="link-card-delete-button card-button">Delete</button> 
        </footer> 
     </article>`
-    );
-  var readButton = document.querySelector(".link-card-read-button");
-  var deleteButton = document.querySelector(".link-card-delete-button");
-  
+  );
+
+  var readButton = document.querySelector(".link-card-read-button"); 
+  var deleteButton = document.querySelector(".link-card-delete-button"); 
+
   readButton.addEventListener('click', function() {
     if( $('#'+thisCard).hasClass('read') ) {
-      $('#'+thisCard).removeClass('read');
+     $('#'+thisCard).removeClass('read');
       readCount--
-      $(readCounter).text(readCount);
+      readCountText();
     } else {
       $('#'+thisCard).addClass('read')
       readCount++
-      $(readCounter).text(readCount);
+      readCountText();
     }
   })
 
   deleteButton.addEventListener('click', function() {
     if($('#'+thisCard).hasClass('read')) {
       readCount--
-      $(readCounter).text(readCount);
+      readCountText();
       $("#" + thisCard).remove();
       cardCount--;
-      $(cardCounter).text(cardCount);
+     cardCountText();
       if (cardCount === 0){
         $('#count-container').slideToggle('slow', 'linear');
       }
     } else {
       $("#" + thisCard).remove();
       cardCount--;
-      $(cardCounter).text(cardCount);
+      cardCountText();
       if (cardCount === 0){
         $('#count-container').slideToggle('slow', 'linear');
       }
     }
   })
 
-  $(titleInput).val("");
-  $(urlInput).val("");
+  $titleInput.val("");
+  $urlInput.val("");
 
   if (cardCount === 0){
     $('#count-container').slideToggle('slow', 'linear');
   }
-
-  if (cardCount === 0){ 
-    $(clearButton).delay(1500).slideToggle('slow')
+  
+  if (cardNumber === 1){ 
+    $clearButton.delay(1500).slideToggle('slow')
   }
 
   cardNumber++;
   cardCount++;
-  $(cardCounter).text(cardCount);
-
+  cardCountText();
 }
 
+
+
+
+
 function enableButton() {
-  if ($(titleInput).val().length === 0 || $(urlInput).val() === ""){
+  if ($titleInput.val().length === 0 || $urlInput.val() === ""){
     inputButton.disabled = true;
   } else {
     inputButton.disabled = false;
@@ -128,7 +135,7 @@ function enableButton() {
 }
 
 function emptyInputError() {
-  if ($(titleInput).val() === "" || $(urlInput).val() === "" || validateURL($(urlInput).val())===false) {
+  if ($titleInput.val() === "" || $urlInput.val() === "" || validateURL($urlInput.val())===false) {
     inputButton.innerText = "Please enter a Title & valid URL"
     setTimeout(function(){ inputButton.innerText = "Enter"; }, 3000);
     return true;
