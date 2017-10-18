@@ -2,11 +2,10 @@
 // VARIABLES
 
 var titleInput = $("#title-input");
-var titleInputJsSelected = document.querySelector("#title-input");
 var urlInput = $("#url-input");
 var inputButton = document.getElementById("input-button");
 var cardCounter = $("#card-count");
-var unreadCounter = $("#unread-count");
+var readCounter = $("#read-count");
 var listContainer = $("#list-container");
 
 var clearButton = $('#clear-read-button');
@@ -24,7 +23,10 @@ inputButton.disabled = true;
 
 inputButton.addEventListener('click', createCard);
 
-titleInputJsSelected.addEventListener('keyup', enableButton)
+$(titleInput).keyup(function() {
+  enableButton();
+});
+
 $(urlInput).keyup(function() {
   enableButton();
 });
@@ -36,9 +38,9 @@ $(clearButton).on('click', function(){
   readCount = 0;
   $('.read').remove();
   $(cardCounter).text(cardCount);
-  $(unreadCounter).text(readCount);
+  $(readCounter).text(readCount);
   if (cardCount === 0){
-        $('#count-container').slideToggle('slow', 'linear')}
+    $('#count-container').delay(1500).slideToggle('slow', 'linear')}
 })
 
 
@@ -72,18 +74,18 @@ function createCard() {
     if( $('#'+thisCard).hasClass('read') ) {
       $('#'+thisCard).removeClass('read');
       readCount--
-      $(unreadCounter).text(readCount);
+      $(readCounter).text(readCount);
     } else {
       $('#'+thisCard).addClass('read')
       readCount++
-      $(unreadCounter).text(readCount);
+      $(readCounter).text(readCount);
     }
   })
 
   deleteButton.addEventListener('click', function() {
     if($('#'+thisCard).hasClass('read')) {
       readCount--
-      $(unreadCounter).text(readCount);
+      $(readCounter).text(readCount);
       $("#" + thisCard).remove();
       cardCount--;
       $(cardCounter).text(cardCount);
@@ -107,6 +109,10 @@ function createCard() {
     $('#count-container').slideToggle('slow', 'linear');
   }
 
+  if (cardCount === 0){ 
+    $(clearButton).delay(1500).slideToggle('slow')
+  }
+
   cardNumber++;
   cardCount++;
   $(cardCounter).text(cardCount);
@@ -114,7 +120,7 @@ function createCard() {
 }
 
 function enableButton() {
-  if (titleInputJsSelected.value.length === 0 || $(urlInput).val() === ""){
+  if ($(titleInput).val().length === 0 || $(urlInput).val() === ""){
     inputButton.disabled = true;
   } else {
     inputButton.disabled = false;

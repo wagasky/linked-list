@@ -247,6 +247,7 @@ header h2 {
 
 /* css for clear read button */
 #clear-read-button {
+  display: none;
   background-color: #FFC107;
   border: 0px;
   border-radius: 0;
